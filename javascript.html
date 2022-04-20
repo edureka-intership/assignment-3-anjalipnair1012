@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class restaurantmanager {
+            restaurantList = [{
+                name: "Noorjehan",
+                address: "Palakkad",
+                city: "Palakkad"
+            }, {
+                name: "punjabi tadka",
+                address: "Railway gate jn",
+                city: "Ernakulam"
+
+            }, {
+                name: "tamra Restaurant",
+                address: "New Delhi",
+                city: "Delhi"
+
+            }, {
+                name: "punjab Express",
+                address: "Kovaipudur,",
+                city: "Coimbatore"
+            },{
+                name:"KFC",
+                address:"Andheri",
+                city:"Mumbai"
+            },{
+                name:"McDonalds",
+                city:"Mumbai"
+
+            }]
+
+            printAllRestaurantNames() {
+                return this.restaurantList.map((obj)=>obj.name);
+                
+                }
+            
+            filterRestuarantBYcity(cityName) {
+                return this.restaurantList.filter((obj)=>obj.city == cityName);
+            }
+        }
+
+        const Restaurant= new restaurantmanager();
+        console.log(Restaurant.printAllRestaurantNames());
+        console.log(Restaurant.filterRestuarantBYcity("Mumbai"));
+        console.log(Restaurant.filterRestuarantBYcity("Coimbatore"));
+        console.log(Restaurant.filterRestuarantBYcity("Palakkad"));
+        console.log(Restaurant.filterRestuarantBYcity("Delhi"));
+        console.log(Restaurant.filterRestuarantBYcity("Ernakulam"));
+        //QUESTION 2
+    orderData={  
+
+        "Below 500":20,
+        "500-1000":29,
+        "1000-1500":30,
+        "1500-2000":44,
+        "above 2000":76,
+    };
+    //2.a
+    let totalorders=0;
+    for (const key in orderData){
+        totalorders += orderData[key];
+    }
+    console.log(`Total number of Orders placed: ${totalorders}`);
+
+    //2.b
+    const orderDatakeys = Object.keys(orderData);
+    console.log(`total number of order proportions: ${orderDatakeys.length}`);
+
+   //2.c
+    const percentArray=orderDatakeys.map((key,index)=>{
+      return{
+          id:index+1,
+          order:key,
+          orderPercentage:((orderData[key]/totalorders)*100).toFixed(2),
+          Restaurant:"punjabi Tadka"
+      };
+    });
+
+    console.log(percentArray);
+    </script>
+</body>
+
+</html>
